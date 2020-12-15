@@ -8,7 +8,6 @@ import { Login } from './components/Login';
 
 function App() {
 	const { user } = useContext(UserContext);
-	console.log(user);
 	return (
 		<div className='App'>
 			{!!user ? <Courses user={user} /> : <Login />}
