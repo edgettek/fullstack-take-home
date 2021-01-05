@@ -1,18 +1,19 @@
-import React from 'react';
 import './App.css';
 
+import React, { useContext } from 'react';
+import withUser, { UserContext } from './components/hoc/withUser';
+
+import { Courses } from './components/Courses';
+import { Login } from './components/Login';
+
 function App() {
+	const { user } = useContext(UserContext);
+	console.log(user);
 	return (
 		<div className='App'>
-			<h1>Course Sign Up</h1>
-			<h2>Courses</h2>
-			<h2>Sign Up</h2>
-
-			<input type='text' placeholder='Name' />
-			<input type='text' placeholder='Email' />
-			<button onClick={() => alert('Sign up clicked!')}>Sign Up</button>
+			{!!user ? <Courses user={user} /> : <Login />}
 		</div>
 	);
 }
 
-export default App;
+export default withUser(App);
