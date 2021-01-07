@@ -45,6 +45,8 @@ Create an application (Frontend and Backend) that allows people to sign up for c
 
 
 ### To Get DB & Server Running
+To set up the server, make sure you're in the `server/` directory.
+
 There is some test data included in `server/src/data/` as a starting point to seed your database. Feel free to add or change data.
 
 The database is setup via Docker. There is already a `docker-compose.yml` file in the server directory, so if you have Docker installed, just run:
@@ -77,6 +79,7 @@ Any changes you make to the server will hot reload, so no need to start/stop the
 **NOTE**: If you want to easily visualize your database and don't have a visualizer, [Postico](https://eggerapps.at/postico/) is a great tool. To connect to the database in Postico, you will need the login credentials from `ormconfig.json`.
 
 ### Frontend
+To set up the frontend, make sure you're in the `course-client` directory. 
 
 `course-client` is a React frontend project included for your use. We are not judging your CSS skills, but we do want to see an intuitive user experience. 
 
