@@ -8,10 +8,6 @@ export class UserService {
 		return this.userRepository.find();
 	}
 
-  async one(id: number) {
-		return this.userRepository.findOne(id);
-  }
-  
 	async findOrCreate(newUser: any) {
 		const users = await this.userRepository.find({
 			where: { email: newUser.email },
@@ -25,10 +21,5 @@ export class UserService {
 
 	async save(newUser: any) {
 		return this.userRepository.save(newUser);
-	}
-
-	async remove(id: number) {
-		let userToRemove = await this.userRepository.findOne(id);
-		await this.userRepository.remove(userToRemove);
 	}
 }

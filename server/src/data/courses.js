@@ -4,7 +4,6 @@ export const CourseSeed = [
 		description:
 			'Ever wondered how you could write a book? Well now is your chance! Take this course to learn how to become the next Toni Morrison.',
 	},
-
 	{
 		name: 'The Physics of Time',
 		description:

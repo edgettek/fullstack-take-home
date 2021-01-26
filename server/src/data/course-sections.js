@@ -7,12 +7,12 @@ export const CourseSectionSeed = [
 	{
 		courseId: 1,
 		nickname: 'Section 2',
-		startDate: '2020-11-13',
+		startDate: '2021-04-13',
 	},
 	{
 		courseId: 1,
 		nickname: 'Section 3',
-		startDate: '2020-11-27',
+		startDate: '2021-11-27',
 	},
 	{
 		courseId: 2,
@@ -22,11 +22,11 @@ export const CourseSectionSeed = [
 	{
 		courseId: 2,
 		nickname: 'Section 2',
-		startDate: '2020-10-29',
+		startDate: '2021-02-29',
 	},
 	{
 		courseId: 2,
 		nickname: 'Section 3',
-		startDate: '2020-11-12',
+		startDate: '2021-09-12',
 	},
 ];

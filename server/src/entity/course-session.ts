@@ -1,28 +1,33 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn
+} from 'typeorm';
 import { Course } from './course';
 
 @Entity()
 export class CourseSession {
-	@PrimaryGeneratedColumn()
-	id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-	@Column()
-	sessionNumber: number;
+    @Column()
+    sessionNumber: number;
 
-	@Column()
-	name: string;
+    @Column()
+    name: string;
 
-	@Column()
-	description: string;
+    @Column()
+    description: string;
 
-	@Column()
-	content: string;
+    @Column()
+    content: string;
 
-	@Column()
-	courseId: number;
+    @Column()
+    courseId: number;
 
-	@ManyToOne(() => Course)
-	@JoinColumn()
-	course: Course;
+    @ManyToOne(() => Course)
+    @JoinColumn()
+    course: Course;
 }
