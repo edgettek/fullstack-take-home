@@ -1,4 +1,4 @@
-import { Course } from '../entity/Course';
+import { Course } from '../entity/course';
 import { getRepository } from 'typeorm';
 
 export class CourseService {
