@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axiosClient from "../axiosClient";
+import axiosClient from "../../axiosClient";
 
 export const Courses = ({ user }) => {
 

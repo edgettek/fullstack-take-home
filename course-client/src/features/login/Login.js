@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 
-import { UserContext } from './hoc/withUser';
-import axiosClient from '../axiosClient';
+import { UserContext } from '../hoc/withUser';
+import axiosClient from '../../axiosClient';
 
 export const Login = () => {
 	const { setUser } = useContext(UserContext);
