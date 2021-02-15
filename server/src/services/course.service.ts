@@ -5,6 +5,6 @@ export class CourseService {
     private courseRepository = getRepository(Course);
 
     async all() {
-        return this.courseRepository.find();
+        return this.courseRepository.find({ relations: ["courseSections"] });
     }
 }
