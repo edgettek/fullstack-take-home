@@ -1,10 +1,11 @@
 export interface Course {
     id: string,
     name: string,
-    descriptions: string,
+    description: string,
     courseSections: CourseSection[]
 }
 
 export interface CourseSection {
-    nickname: string
+    nickname: string,
+    startDate: string,
 }
