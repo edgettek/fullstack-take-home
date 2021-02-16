@@ -34,6 +34,44 @@ const getSectionStatus = (section, userId): SectionStatus => {
     return SectionStatus.OPEN;
 };
 
+const formatCourseSection = (section, userId) => {
+    const formattedSection = {
+        ...section,
+        status: getSectionStatus(section, userId)
+    };
+
+    // Remove users field, response should not include identifying information about other users
+    delete formattedSection.users;
+
+    return formattedSection;
+};
+
+const formatCourse = (course, userId) => {
+    const formattedCourse = {
+        ...course
+    };
+
+    const { courseSections } = formattedCourse;
+
+    // Format course sections
+    formattedCourse.courseSections = _.map(courseSections, (section) => formatCourseSection(section, userId));
+
+    // Sort course sections by start date
+    formattedCourse.courseSections = formattedCourse.courseSections.sort((a, b) => dayjs(a.startDate).isAfter(dayjs(b.startDate)) ? 1 : -1);
+
+    const isEnrolledInCourse = _.some(formattedCourse.courseSections, { status: SectionStatus.ENROLLED });
+
+    // If user is enrolled in the course, then sort the course sessions by session number
+    // Otherwise, the response should not include any course session data
+    if (isEnrolledInCourse) {
+        formattedCourse.courseSessions = formattedCourse.courseSessions.sort((a, b) => a.sessionNumber - b.sessionNumber)
+    } else {
+        delete formattedCourse.courseSessions;
+    }
+
+    return formattedCourse;
+};
+
 export const CourseRoutes = () => {
     const router = Router();
     const courseService = new CourseService();
@@ -48,37 +86,7 @@ export const CourseRoutes = () => {
 
             const courses = await courseService.all();
 
-            const formattedCourses = _.map(courses, (course) => {
-                const formattedCourse = {
-                    ...course
-                };
-
-               const { courseSections } = formattedCourse;
-
-                formattedCourse.courseSections = _.map(courseSections, (section) => {
-                   const formattedSection = {
-                       ...section,
-                       status: getSectionStatus(section, parsedUserId)
-                   };
-
-                   // Remove users field, response should not include identifying information about other users
-                   delete formattedSection.users;
-
-                   return formattedSection;
-                });
-
-                // Sort course sections by start date
-                formattedCourse.courseSections = formattedCourse.courseSections.sort((a, b) => dayjs(a.startDate).isAfter(dayjs(b.startDate)) ? 1 : -1);
-
-               const isEnrolledInCourse = _.some(formattedCourse.courseSections, { status: SectionStatus.ENROLLED });
-
-                // If user is not enrolled in any course sections, response should not include any course session data
-                if (!isEnrolledInCourse) {
-                    delete formattedCourse.courseSessions;
-                }
-
-                return formattedCourse;
-            });
+            const formattedCourses = _.map(courses, (course) => formatCourse(course, parsedUserId));
 
             res.status(200).json({
                 courses: formattedCourses,
