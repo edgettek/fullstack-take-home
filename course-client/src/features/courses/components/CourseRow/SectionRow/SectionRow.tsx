@@ -23,7 +23,7 @@ const getButtonLabel = (status: SectionStatus): string => {
         case SectionStatus.OPEN:
             return "Add Course +";
         default:
-            return "Add Course";
+            return "Add Course +";
     }
 };
 
@@ -32,7 +32,7 @@ export const SectionRow = (props: Props) => {
     const { nickname, status, startDate, id: sectionId } = section;
 
     const dispatch = useDispatch();
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     // @ts-ignore
     const { id: userId } = user;

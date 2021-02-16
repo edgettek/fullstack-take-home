@@ -3,6 +3,7 @@ export interface Course {
     name: string,
     description: string,
     courseSections: CourseSection[]
+    courseSessions?: CourseSession[]
 }
 
 export enum SectionStatus {
@@ -17,6 +18,14 @@ export interface CourseSection {
     nickname: string,
     startDate: string,
     status: SectionStatus
+}
+
+export interface CourseSession {
+    id: number,
+    sessionNumber: number,
+    name: string,
+    description: string,
+    content: string,
 }
 
 export interface User {
