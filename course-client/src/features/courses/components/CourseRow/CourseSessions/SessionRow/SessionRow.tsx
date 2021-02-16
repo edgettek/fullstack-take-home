@@ -1,6 +1,8 @@
 import React from "react";
 import {CourseSession} from "../../../../../../types/types";
 
+import './SessionRow.css'
+
 interface Props {
     session: CourseSession
 }
@@ -13,7 +15,7 @@ export const SessionRow = (props: Props) => {
         <div>
             <h5>{`Session ${sessionNumber}: ${name}`}</h5>
             <div>{`Description: ${description}`}</div>
-            <div>{`Content: ${content}`}</div>
+            <div className="content-text">{`Content: ${content}`}</div>
         </div>
     );
 };
