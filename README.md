@@ -42,3 +42,6 @@ Potential Improvements:
 - Move `@types` and other npm modules into `devDependencies`
 - Add additional tests in both frontend and backend (and fix the false positive integration test)
 - Add loading and error handling in frontend for `/courses` and `/:userId/enroll/:sectionId` API requests
+- There is no backend error handling for an API request to enroll in a full course section
+- There is no mechanism to un-enroll in a section
+- There is no mechanism to stop a single user from enrolling in multiple sections under the same course
