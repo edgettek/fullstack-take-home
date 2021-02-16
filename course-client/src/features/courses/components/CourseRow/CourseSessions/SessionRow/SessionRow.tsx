@@ -12,8 +12,8 @@ export const SessionRow = (props: Props) => {
     return (
         <div>
             <h5>{`Session ${sessionNumber}: ${name}`}</h5>
-            <span>{description}</span>
-            <span>{content}</span>
+            <div>{`Description: ${description}`}</div>
+            <div>{`Content: ${content}`}</div>
         </div>
     );
 };
