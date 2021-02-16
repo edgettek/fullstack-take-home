@@ -5,13 +5,24 @@ export interface Course {
     courseSections: CourseSection[]
 }
 
+export enum SectionStatus {
+    AT_CAPACITY = "AT_CAPACITY",
+    START_DATE_PASSED = "START_DATE_PASSED",
+    ENROLLED = "ENROLLED",
+    OPEN = "OPEN"
+}
+
 export interface CourseSection {
+    id: number,
     nickname: string,
     startDate: string,
+    status: SectionStatus
 }
 
 export interface User {
-    username: string
+    username: string,
+    id: number,
+    courseSections: CourseSection[]
 }
 
 export interface RootState {
