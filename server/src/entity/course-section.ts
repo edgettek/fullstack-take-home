@@ -27,6 +27,6 @@ export class CourseSection {
     @JoinColumn()
     course: Course;
 
-    @ManyToMany(() => User)
+    @ManyToMany(() => User, user => user.courseSections)
     users: User[];
 }

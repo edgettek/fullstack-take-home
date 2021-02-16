@@ -5,6 +5,7 @@ import {
     PrimaryGeneratedColumn
 } from 'typeorm';
 import { CourseSection } from "./course-section";
+import {CourseSession} from "./course-session";
 
 @Entity()
 export class Course {
@@ -19,4 +20,7 @@ export class Course {
 
     @OneToMany(() => CourseSection, section => section.course)
     courseSections: CourseSection[];
+
+    @OneToMany(() => CourseSession, session => session.course)
+    courseSessions: CourseSession[];
 }
