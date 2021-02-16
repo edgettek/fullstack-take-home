@@ -18,5 +18,19 @@ export const UserRoutes = () => {
 		}
 	});
 
+	router.post('/:userId/enroll/:sectionId', async (req, res, next) => {
+		try {
+			const { userId, sectionId } = req.params;
+
+			await userService.enrollInSection(userId, sectionId);
+
+			res.status(204).json({});
+			next();
+		} catch (err) {
+			res.status(400).json({ message: 'BAD_REQUEST' });
+			next();
+		}
+	});
+
 	return router;
 };
