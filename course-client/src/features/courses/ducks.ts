@@ -39,10 +39,14 @@ export const coursesReducer = (state = {}, action: any) => {
     }
 };
 
-export const fetchCourses = () => (dispatch: any) => {
+export const fetchCourses = (userId?: number) => (dispatch: any) => {
     dispatch({ type: fetchCoursesActionType.LOADING});
 
-    axiosClient.get('/courses/').then((response) => {
+    axiosClient.get('/courses/', {
+        params: {
+            userId
+        }
+    }).then((response) => {
         dispatch({ type: fetchCoursesActionType.SUCCEEDED, payload: response.data.courses });
     }).catch((error) => {
         dispatch({ type: fetchCoursesActionType.FAILURE, payload: error.error });
