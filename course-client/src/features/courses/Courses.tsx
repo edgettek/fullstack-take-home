@@ -10,8 +10,8 @@ interface Props {
 }
 
 export const Courses = (props: Props) => {
-
 	const { user } = props;
+	const { id: userId, username } = user;
 
 	const dispatch = useDispatch();
 	const courses = useSelector((state: RootState) =>  {
@@ -19,14 +19,14 @@ export const Courses = (props: Props) => {
 	});
 
 	useEffect(() => {
-		dispatch(fetchCourses())
+		dispatch(fetchCourses(userId))
 	}, [dispatch]);
 
 	const courseRows = _.map(courses, (course) => (<CourseRow course={course}/>));
 
 	return (
 		<>
-			<h1>Welcome: {user.username} </h1>
+			<h1>Welcome: {username} </h1>
 			<h2>Courses</h2>
 			{courseRows}
 		</>
